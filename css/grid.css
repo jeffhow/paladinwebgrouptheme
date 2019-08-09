@@ -1,0 +1,38 @@
+/* Dead Simple Grid (c) 2015 Vladimir Agafonkin */
+
+.row .row { margin:  0 -1.5em; }
+.col      { padding: 0  1.5em; }
+
+.row:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+@media only screen { .col {
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
+}}
+
+/* you only need width to set up columns; all columns are 100%-width by default, so we start
+from a one-column mobile layout and gradually improve it according to available screen space */
+
+@media only screen and (min-width: 783px) {
+    .feature, .info{ width: 50%; }
+    .feed { width: 32%; }
+
+    .feed:nth-child(2){
+        margin: 0 2%;
+    }
+
+    /* When there is only 2 .feed in a row */
+    .feed:first-child:nth-last-child(2) {
+        margin-left:17% /* Centers two cols */ 
+    }
+
+    /* When there is only 1 .feed in a row */
+    .feed:only-child{
+        margin-left: 34%;
+    }
+}
