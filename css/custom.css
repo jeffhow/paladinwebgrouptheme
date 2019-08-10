@@ -693,7 +693,7 @@ h2.display-post-title::first-letter{
 }
 
 .contact h2.display-post-title::first-letter,
-.page-contact h1.display-post-title::first-letter{
+.page-contact h1::first-letter{
   color: var(--primary-color);
   text-shadow: 2px 2px white;
   padding: 0 8px 20px 20px;
@@ -785,6 +785,14 @@ div.wpcf7-response-output {
 }
 
 @media screen and (max-width: 37.5em){
+  .contact .contact-info p,
+  .page-contact .contact-info p{
+    width:100%;
+    margin:auto;
+    font-size: 1.3rem;
+    border: none;
+  }
+
   .contact, .page-contact{
     padding: 0 15px;
   }
