@@ -75,17 +75,26 @@ a:hover, a:focus{
 
 .edit-link{
   display:block;
-  margin: 10px 0;
+  margin-left: 20px;;
 }
 
-.edit-link a {
+.edit-link a, .edit-link a:visited {
   display: inline-block;
-  margin: 10px 0;
+  margin: 10px;
+  color: var(--secondary-color);
+  font-size: 1rem;
+  font-display: var(--deco-font);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.edit-link a:hover, .edit-link a:focus{
+  color:var(--primary-color);
+  text-decoration: underline;
 }
 
 .logged-in-as a, .logged-in-as a:visited,
-.reply a, .reply a:visited,
-.edit-link a, .edit-link a:visited{
+.reply a, .reply a:visited{
   background-color: var(--comp-color);
   color: var(--sword-grey);
   border: var(--sword-grey) 1px solid;
@@ -104,8 +113,7 @@ a:hover, a:focus{
 }
 
 .logged-in-as a:hover, .logged-in-as a:focus,
-.reply a:hover, .reply a:focus,
-.edit-link a:hover, .edit-link a:focus{
+.reply a:hover, .reply a:focus{
   background-color:var(--sword-grey);
   color:var(--comp-color);
   border: var(--sword-grey) 1px solid !important;

@@ -143,11 +143,12 @@ function paladinwebgroup_scripts() {
 	wp_enqueue_style( 'paladinwebgroup-fonts', 'https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Montserrat:300,400,400i,500,700,800', array('paladinwebgroup-grid') );
 
 	// Custom CSS
-	wp_enqueue_style( 'paladinwebgroup-custom-style', get_template_directory_uri() . '/css/custom.css', array('paladinwebgroup-fonts'), '0.0.1', 'all' );
+	wp_enqueue_style( 'paladinwebgroup-custom-style', get_template_directory_uri() . '/css/custom.css', array('paladinwebgroup-fonts', 'paladinwebgroup-fa-icons'), '0.0.1', 'all' );
 	
 	// Font-awesome icons
-	wp_enqueue_script('paladinwebgroup-fa-icons', get_template_directory_uri() . '/assets/fa/js/all.js', array(), '', false);
-	
+	// wp_enqueue_script('paladinwebgroup-fa-icons', get_template_directory_uri() . '/assets/fa/js/all.js', array(), '', false);
+	wp_enqueue_style('paladinwebgroup-fa-icons', get_template_directory_uri() . '/assets/fa/css/all.css', array(), '', 'all');
+
 	// JS Nav functions for front page or rest of site
 	if( is_front_page() ){
 		wp_enqueue_script('paladinwebgroup-front-page-nav', get_template_directory_uri() . '/js/front-page-nav.js',  array('jquery'), '', true);
@@ -235,3 +236,7 @@ function custom_excerpt_length( $length ) {
 	return 20;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+// Wordpress places empty p tags between the_content()
+// https://wordpress.stackexchange.com/questions/13798/remove-empty-paragraphs-from-the-content
+remove_filter('the_content', 'wpautop');

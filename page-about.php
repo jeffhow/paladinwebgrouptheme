@@ -26,9 +26,9 @@ get_header();
 
         endwhile; // End of the loop.
         
+        // Get the portfolio query
         $query = new WP_Query( array( 'category_name' => 'portfolio' ) );
 
-        // Primary Query
 		if ( $query->have_posts() ) :
             $i=0;
             $row=false;

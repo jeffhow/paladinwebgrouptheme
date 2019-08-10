@@ -50,6 +50,86 @@ get_header();
 		endwhile; // End of the loop.
 		?>
 
+			<div class="about container">
+			<?php 
+				
+				// Get the 'About' page
+				$about = new WP_Query( array( 'post_type' => 'page', 'pagename' => 'about' ) );
+        
+				if( $about->have_posts() ):
+					while( $about->have_posts() ): $about->the_post(); 
+						get_template_part( 'template-parts/content', get_post_type() );
+					endwhile;
+				endif; 
+		
+				wp_reset_postdata();
+
+				// Get the portfolio query
+				$portfolio = new WP_Query( array( 'category_name' => 'portfolio' ) );
+
+				if ( $portfolio->have_posts() ) :
+					$i=0;
+					$row=false;
+
+					/* Start the Loop */
+					while ( $portfolio->have_posts() ) :
+						$portfolio->the_post();
+						
+						// Start of a row
+						if( $i % 3 == 0 ) { 
+							echo'<div class="row">';
+							$row = true;
+						}
+
+						get_template_part( 'template-parts/content', 'feed' );
+						
+						$i++;
+						
+						// End of a row
+						if( $i % 3 == 0 ) {
+							echo '</div><!-- .row -->';
+							$row=false;
+						}
+
+					endwhile;
+
+					if( $row ){ // If row wasn't closed before loop ended
+						echo '</div><!-- .row -->';
+						$row=false;
+					}
+					
+					// See more?
+					the_posts_navigation();
+
+				else :
+
+					get_template_part( 'template-parts/content', 'none' );
+
+				endif;
+
+				wp_reset_postdata(); 
+				
+				?>
+
+			</div>
+
+			<div class="contact page-contact">
+
+			<?php 
+				// Get the 'contact' page
+				$contact = new WP_Query( array( 'post_type' => 'page', 'pagename' => 'contact' ) );
+			
+				if( $contact->have_posts() ):
+					while( $contact->have_posts() ): $contact->the_post(); 
+						get_template_part( 'template-parts/content', get_post_type() );
+					endwhile;
+				endif; 
+		
+				wp_reset_postdata();
+			?>
+
+			</div>
+
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
