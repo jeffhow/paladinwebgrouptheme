@@ -17,10 +17,11 @@ get_header();
 
 <div class="hero" style="background-image:url('<?php echo get_the_post_thumbnail_url(); ?>');">
 	<div class="custom-logo custom-logo-spacer"></div> 
+	<div class="hero-content">
+		<h2><?php echo get_bloginfo( 'description', 'display' );?></h2>
 
-	<h2><?php echo get_bloginfo( 'description', 'display' );?></h2>
-
-	<a href="<?php echo esc_url( home_url( '/' ) ); ?>contact/" title="Contact us" class="btn btn-ghost">Contact</a>
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>contact/" title="Contact us" class="btn btn-ghost">Contact</a>
+	</div>
 </div>
 
 	<?php
